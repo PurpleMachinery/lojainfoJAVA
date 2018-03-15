@@ -17,8 +17,8 @@ public class VendasJdbcDAO {
 	}
 
 	public void salvar(Vendas c) throws SQLException {
-		String sql = "insert into tb_vendas values ('" + c.getFk_idCliente() + "','" + c.getValorTotal() + "','" + c.getDesconto()
-				+ "','" + c.getValorPago() + "')";
+		String sql = "insert into tbVendas values ('" + c.getFk_idCliente() + "','" + c.getData() + "','" + c.getValorTotal()
+				+ "','" + c.getDesconto() + "','" + c.getValorPago() + "')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
@@ -26,8 +26,8 @@ public class VendasJdbcDAO {
 	}
 
 	public void alterar(Vendas cExample) {
-		String sql = "update tb_vendas set fk_idCliente='" + cExample.getFk_idCliente() + "',valorTotal='" + cExample.getValorTotal()
-				+ "',valorPago='" + cExample.getValorPago() + "',desconto='" + cExample.getDesconto() + "' where id_Vendas='"
+		String sql = "update tbVendas set fk_idCliente='" + cExample.getFk_idCliente() + "',valorTotal='" + cExample.getValorTotal()
+				+ "',valorPago='" + cExample.getValorPago() + "',desconto='" + cExample.getDesconto() + "' where pk_idVenda='"
 				+ cExample.getId() + "';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
@@ -41,7 +41,7 @@ public class VendasJdbcDAO {
 	}
 
 	public void excluir(int id) {
-		String sql = "delete from tb_vendas where id_hardware='" + id + "';";
+		String sql = "delete from tbVendas where id_hardware='" + id + "';";
 		System.out.println(sql);
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
@@ -53,7 +53,7 @@ public class VendasJdbcDAO {
 	}
 
 	public List<Vendas> listar() {
-		String sql = "select * from tb_vendas";
+		String sql = "select * from tbVendas";
 		System.out.println(sql);
 		List<Vendas> vendas = new ArrayList<Vendas>();
 		try {
@@ -82,7 +82,7 @@ public class VendasJdbcDAO {
 	}
 
 	public Vendas findById(Integer id) {
-		String sql = "select * from tb_vendas where id_hardware = " + id;
+		String sql = "select * from tbVendas where id_hardware = " + id;
 		System.out.println(sql);
 		Vendas hardware = null;
 		try {

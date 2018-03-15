@@ -18,7 +18,7 @@ public class ClienteJdbcDAO {
 	}
 
 	public void salvar(Cliente c) throws SQLException {
-		String sql = "insert into tb_clientes values ('" + c.getNome() + "','" + c.getEndereco() + "','" + c.getFone()
+		String sql = "insert into tbClientes values ('" + c.getNome() + "','" + c.getEndereco() + "','" + c.getFone()
 				+ "','" + c.getEmail() + "')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
@@ -27,7 +27,7 @@ public class ClienteJdbcDAO {
 	}
 
 	public void alterar(Cliente cExample) {
-		String sql = "update tb_clientes set nome='" + cExample.getNome() + "',endereco='" + cExample.getEndereco()
+		String sql = "update tbClientes set nome='" + cExample.getNome() + "',endereco='" + cExample.getEndereco()
 				+ "',fone='" + cExample.getFone() + "',email='" + cExample.getEmail() + "' where id_cliente='"
 				+ cExample.getId() + "';";
 		System.out.println(sql);
@@ -42,7 +42,7 @@ public class ClienteJdbcDAO {
 	}
 
 	public void excluir(int id) {
-		String sql = "delete from tb_clientes where id_cliente='" + id + "';";
+		String sql = "delete from tbClientes where pk_idCliente='" + id + "';";
 		System.out.println(sql);
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
@@ -54,14 +54,14 @@ public class ClienteJdbcDAO {
 	}
 
 	public List<Cliente> listar() {
-		String sql = "select * from tb_clientes";
+		String sql = "select * from tbClientes";
 		System.out.println(sql);
 		List<Cliente> clientes = new ArrayList<Cliente>();
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
-				int id = rs.getInt("id_cliente");
+				int id = rs.getInt("pk_idCliente");
 				String nome = rs.getString("nome");
 				String endereco = rs.getString("endereco");
 				String fone = rs.getString("fone");
@@ -82,7 +82,7 @@ public class ClienteJdbcDAO {
 	}
 
 	public Cliente findById(Integer id) {
-		String sql = "select * from tb_clientes where id_cliente = " + id;
+		String sql = "select * from tbClientes where pk_idCliente = " + id;
 		System.out.println(sql);
 		Cliente cliente = null;
 		try {

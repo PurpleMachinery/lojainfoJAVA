@@ -17,8 +17,8 @@ public class HardwareJdbcDAO {
 	}
 
 	public void salvar(Hardware c) throws SQLException {
-		String sql = "insert into tb_hardwares values ('" + c.getDescricao() + "','" + c.getQtdAtual() + "','" + c.getQtdMinima()
-				+ "','" + c.getPrecoUnitario() + "')";
+		String sql = "insert into tbHardwares values ('" + c.getDescricao() + "','" + c.getPrecoUnitario() + "','" + c.getQtdAtual()
+				+ "','" + c.getQtdMinima() + "')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
@@ -26,8 +26,8 @@ public class HardwareJdbcDAO {
 	}
 
 	public void alterar(Hardware cExample) {
-		String sql = "update tb_hardwares set descricao='" + cExample.getDescricao() + "',qtdAtual='" + cExample.getQtdAtual()
-				+ "',qtdMinima='" + cExample.getQtdMinima() + "',precoUnitario='" + cExample.getPrecoUnitario() + "' where id_hardware='"
+		String sql = "update tbHardwares set descricao='" + cExample.getDescricao() + "',qtdAtual='" + cExample.getQtdAtual()
+				+ "',qtdMinima='" + cExample.getQtdMinima() + "',precoUnit='" + cExample.getPrecoUnitario() + "' where pk_idHardware='"
 				+ cExample.getId() + "';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
@@ -41,7 +41,7 @@ public class HardwareJdbcDAO {
 	}
 
 	public void excluir(int id) {
-		String sql = "delete from tb_hardwares where id_hardware='" + id + "';";
+		String sql = "delete from tbHardwares where pk_idHardware='" + id + "';";
 		System.out.println(sql);
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
@@ -53,16 +53,16 @@ public class HardwareJdbcDAO {
 	}
 
 	public List<Hardware> listar() {
-		String sql = "select * from tb_hardwares";
+		String sql = "select * from tbHardwares";
 		System.out.println(sql);
 		List<Hardware> hardwares = new ArrayList<Hardware>();
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
-				int id = rs.getInt("id_hardware");
+				int id = rs.getInt("pk_idHardware");
 				String descricao = rs.getString("descricao");
-				double precoUnitario = Double.parseDouble(rs.getString("precoUnitario"));
+				double precoUnitario = Double.parseDouble(rs.getString("precoUnit"));
 				int qtdAtual = Integer.parseInt(rs.getString("qtdAtual"));
 				int qtdMinima = Integer.parseInt(rs.getString("qtdMinima"));
 				
@@ -82,7 +82,7 @@ public class HardwareJdbcDAO {
 	}
 
 	public Hardware findById(Integer id) {
-		String sql = "select * from tb_hardwares where id_hardware = " + id;
+		String sql = "select * from tbHardwares where pk_idHardware = " + id;
 		System.out.println(sql);
 		Hardware hardware = null;
 		try {
@@ -91,7 +91,7 @@ public class HardwareJdbcDAO {
 			while (rs.next()) {
 				hardware = new Hardware();
 				String descricao = rs.getString("descricao");
-				double precoUnitario = Double.parseDouble(rs.getString("precoUnitario"));
+				double precoUnitario = Double.parseDouble(rs.getString("precoUnit"));
 				int qtdAtual = Integer.parseInt(rs.getString("qtdAtual"));
 				int qtdMinima = Integer.parseInt(rs.getString("qtdMinima"));
 
