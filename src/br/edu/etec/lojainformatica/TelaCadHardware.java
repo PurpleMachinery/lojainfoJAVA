@@ -18,7 +18,7 @@ import persistence.HardwareJdbcDAO;
 
 public class TelaCadHardware extends TelaDeCadastro {
 	List list = new List();
-	Hardware hardware=new Hardware();
+	Hardware hardware = new Hardware();
 
 	JLabel lbDescricao = new JLabel("Descrição");
 	JTextField txtDescricao = new JTextField();
@@ -36,17 +36,17 @@ public class TelaCadHardware extends TelaDeCadastro {
 		super(4, 2);
 		this.add(lbDescricao);
 		this.add(txtDescricao);
-		
+
 		this.add(lbPrecoUnit);
 		this.add(txtPrecoUnit);
-		
+
 		this.add(lbQtdAtual);
 		this.add(txtQtdAtual);
-		
+
 		this.add(lbQtdMinima);
 		this.add(txtQtdMinima);
 		System.out.println("terminando de de adicionar os campos, add agora actionlistener...");
-		
+
 		JScrollPane listScroller = new JScrollPane(list);
 		listScroller.setPreferredSize(new Dimension(250, 80));
 		this.painelListagem.add(list);
@@ -157,9 +157,9 @@ public class TelaCadHardware extends TelaDeCadastro {
 			Hardware cli = hardwareJdbcDAO.findById(idInt);
 			if (cli != null) {
 				this.txtDescricao.setText(cli.getDescricao());
-				this.txtPrecoUnit.setText(""+cli.getPrecoUnitario());
-				this.txtQtdAtual.setText(""+cli.getQtdAtual());
-				this.txtQtdMinima.setText(""+cli.getQtdMinima());
+				this.txtPrecoUnit.setText("" + cli.getPrecoUnitario());
+				this.txtQtdAtual.setText("" + cli.getQtdAtual());
+				this.txtQtdMinima.setText("" + cli.getQtdMinima());
 			} else {
 				JOptionPane.showMessageDialog(this, "Nao ha hardwares com esse id");
 			}
