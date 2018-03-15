@@ -12,7 +12,7 @@ import javax.swing.JMenuItem;
 
 public class App extends JFrame {
 	TelaCadClientes tlaCadCli = new TelaCadClientes();
-	TelaCadVendas tlaCadVdas = new TelaCadVendas(getDefaultCloseOperation(), getDefaultCloseOperation());
+	TelaCadVendas tlaCadVdas = new TelaCadVendas();
 	TelaCadHardware tlaCadHard = new TelaCadHardware();
 	private JMenuBar menuBar;
 	private JMenu menu;
@@ -48,6 +48,7 @@ public class App extends JFrame {
 		JMenuItem menuItemHardware = new JMenuItem("Hardware");
 		menuItemHardware.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("menuHardActionPerformed...");
 				App.this.tlaCadCli.setVisible(false);
 				App.this.tlaCadVdas.setVisible(false);
 				App.this.tlaCadHard.setVisible(true);
@@ -61,6 +62,7 @@ public class App extends JFrame {
 		JMenuItem menuItemVenda = new JMenuItem("Vendas");
 		menuItemVenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("menuVendasActionPerformed...");
 				App.this.tlaCadCli.setVisible(false);
 				App.this.tlaCadHard.setVisible(false);
 				App.this.tlaCadVdas.setVisible(true);

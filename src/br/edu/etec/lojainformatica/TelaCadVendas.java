@@ -36,21 +36,69 @@ public class TelaCadVendas extends TelaDeCadastro {
 
 	public TelaCadVendas() {
 		super(5, 2);
-		this.add(lblIdCliente);
-		this.add(txtIdCliente);
+		this.painelParaCampos.add(lblIdCliente);
+		this.painelParaCampos.add(txtIdCliente);
 
-		this.add(lblValorTotal);
-		this.add(txtValorTotal);
+		this.painelParaCampos.add(lblValorTotal);
+		this.painelParaCampos.add(txtValorTotal);
 
-		this.add(lblDesconto);
-		this.add(txtDesconto);
+		this.painelParaCampos.add(lblDesconto);
+		this.painelParaCampos.add(txtDesconto);
 
-		this.add(lblValorPago);
-		this.add(txtValorPago);
+		this.painelParaCampos.add(lblValorPago);
+		this.painelParaCampos.add(txtValorPago);
 
-		this.add(lblData);
-		this.add(txtData);
+		this.painelParaCampos.add(lblData);
+		this.painelParaCampos.add(txtData);
+		System.out.println("terminando de de adicionar os campos, add agora actionlistener...");
 
+		JScrollPane listScroller = new JScrollPane(list);
+		listScroller.setPreferredSize(new Dimension(250, 80));
+		this.painelListagem.add(list);
+
+		this.btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadVendas.this.limparFormulario();
+			}
+		});
+		this.btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					TelaCadVendas.this.salvar();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+
+		this.btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadVendas.this.cancelar();
+			}
+		});
+
+		this.btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					TelaCadVendas.this.alterar();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+
+		/*this.btnListar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				try {
+					TelaCadVendas.this.listar();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});*/
 	}
 
 	
@@ -138,7 +186,7 @@ public class TelaCadVendas extends TelaDeCadastro {
 			e.printStackTrace();
 		}
 	}
-
+/*
 	@Override
 	void listar() throws SQLException {
 		Connection conn;
@@ -158,5 +206,5 @@ public class TelaCadVendas extends TelaDeCadastro {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 }

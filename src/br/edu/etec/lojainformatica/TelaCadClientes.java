@@ -33,9 +33,7 @@ public class TelaCadClientes extends TelaDeCadastro {
 	JTextField txtEmail = new JTextField();
 
 	public TelaCadClientes() {
-		super(4, 2); // quatro linhas e duas colunas
-		// Na Hora de add os componentes, considerar a ordem deles
-		// Conforme usamos abaixo
+		super(4, 2); // quatro linhas e duas colunas Na Hora de add os componentes, considerar a ordem deles Conforme usamos abaixo
 		this.painelParaCampos.add(lbNome);
 		this.painelParaCampos.add(txtNome);
 
@@ -85,7 +83,7 @@ public class TelaCadClientes extends TelaDeCadastro {
 			}
 		});
 
-		this.btnListar.addActionListener(new ActionListener() {
+		/*this.btnListar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -95,7 +93,7 @@ public class TelaCadClientes extends TelaDeCadastro {
 					e1.printStackTrace();
 				}
 			}
-		});
+		});*/
 	}
 
 	@Override
@@ -181,7 +179,7 @@ public class TelaCadClientes extends TelaDeCadastro {
 			e.printStackTrace();
 		}
 	}
-
+/*
 	@Override
 	void listar() throws SQLException {
 		Connection conn;
@@ -201,6 +199,6 @@ public class TelaCadClientes extends TelaDeCadastro {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 }

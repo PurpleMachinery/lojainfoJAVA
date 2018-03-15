@@ -34,17 +34,17 @@ public class TelaCadHardware extends TelaDeCadastro {
 
 	public TelaCadHardware() {
 		super(4, 2);
-		this.add(lbDescricao);
-		this.add(txtDescricao);
+		this.painelParaCampos.add(lbDescricao);
+		this.painelParaCampos.add(txtDescricao);
 
-		this.add(lbPrecoUnit);
-		this.add(txtPrecoUnit);
+		this.painelParaCampos.add(lbPrecoUnit);
+		this.painelParaCampos.add(txtPrecoUnit);
 
-		this.add(lbQtdAtual);
-		this.add(txtQtdAtual);
+		this.painelParaCampos.add(lbQtdAtual);
+		this.painelParaCampos.add(txtQtdAtual);
 
-		this.add(lbQtdMinima);
-		this.add(txtQtdMinima);
+		this.painelParaCampos.add(lbQtdMinima);
+		this.painelParaCampos.add(txtQtdMinima);
 		System.out.println("terminando de de adicionar os campos, add agora actionlistener...");
 
 		JScrollPane listScroller = new JScrollPane(list);
@@ -83,7 +83,7 @@ public class TelaCadHardware extends TelaDeCadastro {
 			}
 		});
 
-		this.btnListar.addActionListener(new ActionListener() {
+		/*this.btnListar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -93,7 +93,7 @@ public class TelaCadHardware extends TelaDeCadastro {
 					e1.printStackTrace();
 				}
 			}
-		});
+		});*/
 	}
 
 	@Override
@@ -182,7 +182,7 @@ public class TelaCadHardware extends TelaDeCadastro {
 			e.printStackTrace();
 		}
 	}
-
+/*
 	@Override
 	void listar() throws SQLException {
 		Connection conn;
@@ -202,5 +202,5 @@ public class TelaCadHardware extends TelaDeCadastro {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 }
